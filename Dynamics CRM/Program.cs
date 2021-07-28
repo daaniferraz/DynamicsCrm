@@ -16,7 +16,7 @@ namespace Dynamics_CRM
             var CrmImport = new ConexaoImport().Obter();
             var CrmNew = new ConexaoCrm().Obter();
 
-            ImportarContaCrmTerceiro(CrmImport);
+            ImportarContaCrmTerceiro(CrmImport, CrmNew);
 
             Console.WriteLine("Fim de Execução");
 
@@ -24,21 +24,24 @@ namespace Dynamics_CRM
 
         #region Importar
 
-        static void ImportarContaCrmTerceiro(CrmServiceClient CrmImport)
+        static void ImportarContaCrmTerceiro(CrmServiceClient CrmImport, CrmServiceClient CrmNew)
 
         {
-            string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='false'>
+            string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true'>
                             <entity name='account'>
-                                <attribute name='name' />
-                                <attribute name='primarycontactid' />
+                                <attribute name='drf_cpfcnpj' />
+
                                 <attribute name='telephone1' />
+                                <attribute name='name' />
+                                <attribute name='emailaddress1' />
                                 <attribute name='accountid' />
-                                <attribute name='createdon' />
-                                <attribute name='emailaddress1'/>
+
                                 <order attribute='name' descending='false' />
                                 <filter type='and'>
-                                    <condition attribute='name' operator='not-null' />
-                                    
+
+                                    <condition attribute='name' operator='not-null' distinct='true' />
+                                    <condition attribute='drf_cpfcnpj' operator='not-null' distinct='true'/>
+
                                 </filter>
                             </entity>
                             </fetch>";
@@ -48,24 +51,32 @@ namespace Dynamics_CRM
             foreach (var item in colecao.Entities)
             {
                 var entidade = new Entity("account");
-                
-                Guid registro = new Guid();
 
+                Guid registro = new Guid();
                 var idImport = item.Id;
 
-                entidade.Attributes.Add("name",item["name"].ToString());
+                entidade.Attributes.Add("name", item["name"].ToString());
 
-                
-                if (CrmImport.Retrieve("account", idImport, new ColumnSet("telephone1")).Attributes.Contains("telephone1"))
+
+                if (CrmImport.Retrieve("account", idImport, new ColumnSet("drf_cpfcnpj")).Attributes.Contains("drf_cpfcnpj"))
                 {
-                    entidade.Attributes.Add("telephone1", item["telephone1"].ToString());
+                    
+                    entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
+                    
                 }
                 else
-                    entidade.Attributes.Add("telephone1", "".ToString());
+                    entidade.Attributes.Add("grp3_cpfcnpj", "".ToString());
+                    
+                if (CrmImport.Retrieve("account", idImport, new ColumnSet("emailaddress1")).Attributes.Contains("emailaddress1"))
+                {
+                    entidade.Attributes.Add("emailaddress1", item["emailaddress1"].ToString());
+                }else
+                entidade.Attributes.Add("emailaddress1", "".ToString());
 
-                //entidade.Attributes.Add("emailaddress1", item["emailaddress1"].ToString());
-                //entidade.Attributes.Add("accountid", item["accountid"]);
-                
+
+
+
+
                 registro = conection.Create(entidade);
             }
 
