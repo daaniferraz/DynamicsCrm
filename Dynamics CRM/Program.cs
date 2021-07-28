@@ -16,7 +16,7 @@ namespace Dynamics_CRM
             var CrmImport = new ConexaoImport().Obter();
             var CrmNew = new ConexaoCrm().Obter();
 
-            ImportarContaCrmTerceiro(CrmImport, CrmNew);
+            ImportarContaCrmTerceiro(CrmImport);
 
             Console.WriteLine("Fim de Execução");
 
@@ -24,27 +24,15 @@ namespace Dynamics_CRM
 
         #region Importar
 
-        static void ImportarContaCrmTerceiro(CrmServiceClient CrmImport, CrmServiceClient CrmNew)
+        static void ImportarContaCrmTerceiro(CrmServiceClient CrmImport)
 
         {
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true'>
                             <entity name='account'>
-                                <attribute name='drf_cpfcnpj' />
-
-                                <attribute name='telephone1' />
-                                <attribute name='name' />
-                                <attribute name='emailaddress1' />
-                                <attribute name='accountid' />
-
-                                <order attribute='name' descending='false' />
-                                <filter type='and'>
-
-                                    <condition attribute='name' operator='not-null' distinct='true' />
-                                    <condition attribute='drf_cpfcnpj' operator='not-null' distinct='true'/>
-
-                                </filter>
+                             <attribute name='name' />
+                             <attribute name='drf_cpfcnpj' />
                             </entity>
-                            </fetch>";
+                             </fetch>";
             EntityCollection colecao = CrmImport.RetrieveMultiple(new FetchExpression(query));
             var conection = new ConexaoCrm().Obter();
 
@@ -57,27 +45,24 @@ namespace Dynamics_CRM
 
                 entidade.Attributes.Add("name", item["name"].ToString());
 
+             
 
                 if (CrmImport.Retrieve("account", idImport, new ColumnSet("drf_cpfcnpj")).Attributes.Contains("drf_cpfcnpj"))
                 {
-                    
-                    entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
-                    
+
+                   entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
+
                 }
                 else
                     entidade.Attributes.Add("grp3_cpfcnpj", "".ToString());
-                    
-                if (CrmImport.Retrieve("account", idImport, new ColumnSet("emailaddress1")).Attributes.Contains("emailaddress1"))
-                {
-                    entidade.Attributes.Add("emailaddress1", item["emailaddress1"].ToString());
-                }else
-                entidade.Attributes.Add("emailaddress1", "".ToString());
 
-
-
-
-
+                //if (CrmImport.Retrieve("account", idImport, new ColumnSet("emailaddress1")).Attributes.Contains("emailaddress1"))
+                //{
+                //    entidade.Attributes.Add("emailaddress1", item["emailaddress1"].ToString());
+                //}else
+                //entidade.Attributes.Add("emailaddress1", "".ToString());
                 registro = conection.Create(entidade);
+
             }
 
         }
