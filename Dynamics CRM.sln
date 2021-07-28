@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics CRM", "Dynamics CRM\Dynamics CRM.csproj", "{056030D2-A7D2-4ACC-A5A3-07D5643125BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{FF32B40E-5386-4BE4-B7E3-37B3EC96F36E}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Microsoft.Crm.Sdk.Proxy.dll = Lib\Microsoft.Crm.Sdk.Proxy.dll
+		Lib\Microsoft.Xrm.Sdk.dll = Lib\Microsoft.Xrm.Sdk.dll
+		Lib\Microsoft.Xrm.Sdk.Workflow.dll = Lib\Microsoft.Xrm.Sdk.Workflow.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{056030D2-A7D2-4ACC-A5A3-07D5643125BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{056030D2-A7D2-4ACC-A5A3-07D5643125BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{056030D2-A7D2-4ACC-A5A3-07D5643125BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{056030D2-A7D2-4ACC-A5A3-07D5643125BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E0420A2-E07E-4DF9-BE63-496C9C9EC85E}
+	EndGlobalSection
+EndGlobal
