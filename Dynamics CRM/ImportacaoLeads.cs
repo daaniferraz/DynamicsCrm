@@ -11,7 +11,7 @@ namespace Dynamics_CRM
 {
     class ImportacaoLeads
     {
-        public  void ImportarConta(CrmServiceClient CrmImport)
+        public void ImportarConta(CrmServiceClient CrmImport)
 
         {
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
@@ -50,12 +50,12 @@ namespace Dynamics_CRM
                                     </filter>
                                 </entity>
                             </fetch>";
-                    query2 = string.Format(query2, nome.ToString(),cpf.ToString());
-                    
+                    query2 = string.Format(query2, nome.ToString(), cpf.ToString());
+
                     EntityCollection col = conection.RetrieveMultiple(new FetchExpression(query2));
 
 
-                    if (col.Entities.Count==0)
+                    if (col.Entities.Count == 0)
                     {
                         entidade.Attributes.Add("name", item["name"].ToString());
                         entidade.Attributes.Add("grp3_cpf", item["drf_cpfcnpj"].ToString());
@@ -67,15 +67,15 @@ namespace Dynamics_CRM
 
                         throw new Exception();
                     }
-                    
+
                 }
                 catch (Exception)
                 {
 
                     Console.WriteLine("Log");
                 }
-               
-                
+
+
 
                 //if (!(CrmImport.Retrieve("account", idImport, new ColumnSet("drf_cpfcnpj")).Attributes.Contains("drf_cpfcnpj")))
                 //{
@@ -87,11 +87,12 @@ namespace Dynamics_CRM
                 //    entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
 
 
-               
-                
-                
+
+
+
 
             }
 
         }
     }
+}

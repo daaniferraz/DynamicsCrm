@@ -18,11 +18,11 @@ namespace AccountPreValidation
 
             trace.Trace("Iniciando o Plugin para validar se o CNPJ está duplicado.");
                        
-            Entity cnpj = null;
+            Entity CrmTargetEntity = null;
 
             if (context.InputParameters.Contains("Target"))
             {
-                cnpj = (Entity)context.InputParameters["Target"];
+                CrmTargetEntity = (Entity)context.InputParameters["Target"];
             }
             else
             {
@@ -32,7 +32,7 @@ namespace AccountPreValidation
             trace.Trace("A entidade já foi atribuida ao CNPJ");
 
             QueryExpression queryExpression = new QueryExpression("account");
-            queryExpression.Criteria.AddCondition("grp3_cpfcnpj", ConditionOperator.Equal, cnpj.Attributes["grp3_cpfcnpj"].ToString());
+            queryExpression.Criteria.AddCondition("grp3_cpfcnpj", ConditionOperator.Equal, CrmTargetEntity.Attributes["grp3_cpfcnpj"].ToString());
             queryExpression.ColumnSet = new ColumnSet("grp3_cpfcnpj");
             EntityCollection colecaoEntidades = service.RetrieveMultiple(queryExpression);
 
