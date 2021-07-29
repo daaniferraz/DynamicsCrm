@@ -51,9 +51,6 @@
     <Reference Include="Microsoft.Xrm.Sdk.Workflow">
       <HintPath>..\..\..\..\Academia de Talentos\Alunos\Lib\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Xrm.Tooling.Connector">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.0.79\lib\net462\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xrm.Tooling.Connector;
+﻿/*using Microsoft.Xrm.Tooling.Connector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,3 +31,4 @@ namespace Dynamics_CRM
         }
     }
 }
+*/
