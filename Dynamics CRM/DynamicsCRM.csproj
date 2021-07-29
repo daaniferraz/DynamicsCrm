@@ -92,6 +92,7 @@
     <Compile Include="ConexaoCrm.cs" />
     <Compile Include="ConexaoImport.cs" />
     <Compile Include="ImportacaoConta.cs" />
+    <Compile Include="ImportacaoLeads.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
