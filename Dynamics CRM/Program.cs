@@ -22,7 +22,6 @@ namespace Dynamics_CRM
             ImportarContaCrmTerceiro.ImportarConta(CrmImport);
 
 
-
             Console.WriteLine("Fim de Execução");
 
         }

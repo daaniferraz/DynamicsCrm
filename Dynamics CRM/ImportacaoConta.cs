@@ -14,41 +14,82 @@ namespace Dynamics_CRM
         public  void ImportarConta(CrmServiceClient CrmImport)
 
         {
-            string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical'>
+            string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
                             <entity name='account'>
-                             <attribute name='name'  />
-                             <attribute name='drf_cpfcnpj' distinct='true'/>
-                             <attribute name='accountid' />
+                             <attribute name='name' />
+                             <attribute name='drf_cpfcnpj' />
+                             </entity>
+                            </fetch>";
 
-                            </entity>
-                             </fetch>";
             EntityCollection colecao = CrmImport.RetrieveMultiple(new FetchExpression(query));
             var conection = new ConexaoCrm().Obter();
 
             foreach (var item in colecao.Entities)
             {
-                var entidade = new Entity("account");
+                try
+                {
+                    var entidade = new Entity("account");
 
-                Guid registro = new Guid();
-                var idImport = item.Id;
+                    Guid registro = new Guid();
 
-                entidade.Attributes.Add("name", item["name"].ToString());
+                    var idImport = item.Id;
 
-                if (CrmImport.Retrieve("account", idImport, new ColumnSet("drf_cpfcnpj")).Attributes.Contains("drf_cpfcnpj"))
+                    var nome = item["name"].ToString();
+                    var cpf = item["drf_cpfcnpj"].ToString();
+
+
+
+                    string query2 = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
+                                <entity name='account'>
+                                    <attribute name='name'/>
+                                    <attribute name='grp3_cpfcnpj'/>
+                                    <order attribute='name' descending='false' />
+                                    <filter type='and'>
+                                        <condition attribute='name' operator='eq' value= '{0}'/>
+                                        <condition attribute='grp3_cpfcnpj' operator='eq' value= '{1}'/>                               
+                                    </filter>
+                                </entity>
+                            </fetch>";
+                    query2 = string.Format(query2, nome.ToString(),cpf.ToString());
+                    
+                    EntityCollection col = conection.RetrieveMultiple(new FetchExpression(query2));
+
+
+                    if (col.Entities.Count==0)
+                    {
+                        entidade.Attributes.Add("name", item["name"].ToString());
+                        entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
+                        registro = conection.Create(entidade);
+
+                    }
+                    else
+                    {
+
+                        throw new Exception();
+                    }
+                    
+                }
+                catch (Exception)
                 {
 
-                    entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
-
+                    Console.WriteLine("Log");
                 }
-                else
-                    entidade.Attributes.Add("grp3_cpfcnpj", "".ToString());
+               
+                
 
-                //if (CrmImport.Retrieve("account", idImport, new ColumnSet("emailaddress1")).Attributes.Contains("emailaddress1"))
+                //if (!(CrmImport.Retrieve("account", idImport, new ColumnSet("drf_cpfcnpj")).Attributes.Contains("drf_cpfcnpj")))
                 //{
-                //    entidade.Attributes.Add("emailaddress1", item["emailaddress1"].ToString());
-                //}else
-                //entidade.Attributes.Add("emailaddress1", "".ToString());
-                registro = conection.Create(entidade);
+
+                //    entidade.Attributes.Add("grp3_cpfcnpj", "".ToString());
+
+                //}
+                //else
+                //    entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
+
+
+               
+                
+                
 
             }
 
