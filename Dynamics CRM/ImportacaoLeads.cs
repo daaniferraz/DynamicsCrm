@@ -7,6 +7,8 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Tooling.Connector;
 
+
+
 namespace Dynamics_CRM
 {
     class ImportacaoLeads

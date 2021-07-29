@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plugin
+namespace PluginStepValidation
 {
-    public static class ValidationEnum
+    public static class PluginStepEnum
     {
         public enum Stage
         {
