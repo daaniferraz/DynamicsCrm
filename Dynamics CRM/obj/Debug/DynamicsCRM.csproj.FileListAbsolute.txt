@@ -1,0 +1,25 @@
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Dynamics CRM.exe.config
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Dynamics CRM.exe
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Dynamics CRM.pdb
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Rest.ClientRuntime.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Deployment.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Workflow.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Tooling.Connector.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Newtonsoft.Json.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Deployment.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Workflow.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Tooling.Connector.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\bin\Debug\Newtonsoft.Json.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM.csprojAssemblyReference.cache
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CoreCompileInputs.cache
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CopyComplete
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.exe
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.pdb

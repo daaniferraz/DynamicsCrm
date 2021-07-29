@@ -13,7 +13,7 @@ namespace AccountPreValidation
 
             var context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
 
-            if (context.MessageName.ToLower() == "create" && context.Mode == Convert.ToInt32(PluginStepEnum.Mode.Synchronous) &&
+            if (context.MessageName.ToLower() == "create" || context.MessageName.ToLower() == "update" && context.Mode == Convert.ToInt32(PluginStepEnum.Mode.Synchronous) &&
                 context.Stage == Convert.ToInt32(PluginStepEnum.Stage.PreValidation))
             {
 
