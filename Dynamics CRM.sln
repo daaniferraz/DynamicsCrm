@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1525
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicsCRM", "Dynamics CRM\DynamicsCRM.csproj", "{056030D2-A7D2-4ACC-A5A3-07D5643125BA}"
 EndProject
@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{FF32B40E-538
 		Lib\Microsoft.Xrm.Sdk.dll = Lib\Microsoft.Xrm.Sdk.dll
 		Lib\Microsoft.Xrm.Sdk.Workflow.dll = Lib\Microsoft.Xrm.Sdk.Workflow.dll
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin", "Plugins\Plugin.csproj", "{57074ABB-FC36-4019-A083-160E8B51DB09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +24,10 @@ Global
 		{056030D2-A7D2-4ACC-A5A3-07D5643125BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{056030D2-A7D2-4ACC-A5A3-07D5643125BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{056030D2-A7D2-4ACC-A5A3-07D5643125BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57074ABB-FC36-4019-A083-160E8B51DB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57074ABB-FC36-4019-A083-160E8B51DB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57074ABB-FC36-4019-A083-160E8B51DB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57074ABB-FC36-4019-A083-160E8B51DB09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

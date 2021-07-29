@@ -1,0 +1,14 @@
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Plugin.dll.config
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Plugin.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Plugin.pdb
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Sdk.Workflow.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Tooling.Connector.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Microsoft.Rest.ClientRuntime.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Tooling.Connector.xml
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.CoreCompileInputs.cache
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.CopyComplete
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\obj\Debug\Plugin.dll
+C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\obj\Debug\Plugin.pdb
