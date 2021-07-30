@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xrm.Sdk;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,13 @@ namespace Dynamics_CRM
 {
     class ValidateNullField
     {
+        public void Validation(Entity item, Entity entidade,string variavel)
+        {
+            if (item.Attributes.Contains(variavel))
+            {
+                entidade.Attributes.Add(variavel, item[variavel].ToString());
+            }
+
+        }
     }
 }
