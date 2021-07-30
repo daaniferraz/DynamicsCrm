@@ -29,12 +29,9 @@ namespace AccountPreValidation
                 {
                     CrmTargetEntity = (Entity)context.InputParameters["Target"];
                 }
-                else
-                {
-                    return;
-                }
 
-                trace.Trace("A entidade já foi atribuida ao CNPJ");
+
+                trace.Trace("Entidade atribuida ao CrmTargetEntity");
 
                 QueryExpression queryExpression = new QueryExpression("account");
                 queryExpression.Criteria.AddCondition("grp3_cpfcnpj", ConditionOperator.Equal, CrmTargetEntity.Attributes["grp3_cpfcnpj"].ToString());
@@ -44,12 +41,9 @@ namespace AccountPreValidation
 
                 if (colecaoEntidades.Entities.Count > 0)
                 {
-                    throw new InvalidPluginExecutionException("CNPJ já cadastrado no sistema!!");
+                    throw new InvalidPluginExecutionException("CNPJ já cadastrado. Por favor insira um CNPJ ainda não cadastrado.");
                 }
             }
-
-            
-
 
         }
         
