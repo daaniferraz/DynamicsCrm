@@ -35,26 +35,31 @@ namespace LeadPreValidation
 
                 QueryExpression queryExpression = new QueryExpression("grp3_clientepotenciallead");
 
-                if (CrmTargetEntity.Attributes["grp3_cpfoucnpj"] == new OptionSetValue(1))
+                string campoDesejado = "";
+                string msgError = "";
+                
+                if (((OptionSetValue)CrmTargetEntity["grp3_cpfoucnpj"]).Value == 100000000)
                 {
-                    throw new InvalidPluginExecutionException("Pessoa física selecionada.");
+                    campoDesejado = "grp3_cpf";
+                    msgError = "CPF já cadastrado. Por favor insira um ainda não cadastrado.";
                 }
-                else if (CrmTargetEntity.Attributes["grp3_cpfoucnpj"] == new OptionSetValue(2))
+                else if (((OptionSetValue)CrmTargetEntity["grp3_cpfoucnpj"]).Value == 100000001)
                 {
-                    throw new InvalidPluginExecutionException("Pessoa Juridica");
+                    campoDesejado = "grp3_cnpj";
+                    msgError = "CNPJ já cadastrado. Por favor insira um ainda não cadastrado.";
                 }
 
-                /*
-                queryExpression.Criteria.AddCondition("grp3_cpf", ConditionOperator.Equal, CrmTargetEntity.Attributes["grp3_cpf"].ToString());
-                queryExpression.ColumnSet = new ColumnSet("grp3_cpf");
+                
+                queryExpression.Criteria.AddCondition(campoDesejado, ConditionOperator.Equal, CrmTargetEntity.Attributes[campoDesejado].ToString());
+                queryExpression.ColumnSet = new ColumnSet(campoDesejado);
                 EntityCollection colecaoEntidades = service.RetrieveMultiple(queryExpression);
 
 
                 if (colecaoEntidades.Entities.Count > 0)
                 {
-                    throw new InvalidPluginExecutionException("CPF já cadastrado. Por favor insira um CPF ainda não cadastrado.");
+                    throw new InvalidPluginExecutionException(msgError);
                 }
-                */
+                
             }
 
         }
