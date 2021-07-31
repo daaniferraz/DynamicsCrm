@@ -38,12 +38,12 @@ namespace LeadPreValidation
                 string campoDesejado = "";
                 string msgError = "";
                 
-                if (((OptionSetValue)CrmTargetEntity["grp3_cpfoucnpj"]).Value == 100000000)
+                if (((OptionSetValue)CrmTargetEntity["grp3_cpfoucnpj"]).Value == 100000000) //Checa se o campo é Pessoa Física.
                 {
                     campoDesejado = "grp3_cpf";
                     msgError = "CPF já cadastrado. Por favor insira um ainda não cadastrado.";
                 }
-                else if (((OptionSetValue)CrmTargetEntity["grp3_cpfoucnpj"]).Value == 100000001)
+                else if (((OptionSetValue)CrmTargetEntity["grp3_cpfoucnpj"]).Value == 100000001) //Checa se o campo é Pessoa Juridica
                 {
                     campoDesejado = "grp3_cnpj";
                     msgError = "CNPJ já cadastrado. Por favor insira um ainda não cadastrado.";
