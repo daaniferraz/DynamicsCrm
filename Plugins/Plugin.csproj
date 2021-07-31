@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contact_CpfPreValidation.cs" />
+    <Compile Include="Lead_CpfCnpjPreValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Account_CnpjPreValidation.cs" />
     <Compile Include="PluginStepValidation.cs" />

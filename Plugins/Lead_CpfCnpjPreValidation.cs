@@ -3,9 +3,9 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using PluginStepValidation;
 
-namespace ContactPreValidation
+namespace LeadPreValidation
 {
-    public class Contact_CpfPreValidation : IPlugin
+    public class Lead_CpfCnpjPreValidation : IPlugin
     {
 
         public void Execute(IServiceProvider serviceProvider)
@@ -33,7 +33,18 @@ namespace ContactPreValidation
 
                 trace.Trace("Entidade atribuida ao CrmTargetEntity");
 
-                QueryExpression queryExpression = new QueryExpression("contact");
+                QueryExpression queryExpression = new QueryExpression("grp3_clientepotenciallead");
+
+                if (CrmTargetEntity.Attributes["grp3_cpfoucnpj"] == new OptionSetValue(1))
+                {
+                    throw new InvalidPluginExecutionException("Pessoa física selecionada.");
+                }
+                else if (CrmTargetEntity.Attributes["grp3_cpfoucnpj"] == new OptionSetValue(2))
+                {
+                    throw new InvalidPluginExecutionException("Pessoa Juridica");
+                }
+
+                /*
                 queryExpression.Criteria.AddCondition("grp3_cpf", ConditionOperator.Equal, CrmTargetEntity.Attributes["grp3_cpf"].ToString());
                 queryExpression.ColumnSet = new ColumnSet("grp3_cpf");
                 EntityCollection colecaoEntidades = service.RetrieveMultiple(queryExpression);
@@ -43,6 +54,7 @@ namespace ContactPreValidation
                 {
                     throw new InvalidPluginExecutionException("CPF já cadastrado. Por favor insira um CPF ainda não cadastrado.");
                 }
+                */
             }
 
         }
