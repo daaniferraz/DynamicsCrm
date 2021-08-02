@@ -10,3 +10,6 @@ C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\obj\Debug\Plugi
 C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\obj\Debug\Plugin.dll
 C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\obj\Debug\Plugin.pdb
 C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\obj\Debug\Plugin.csprojAssemblyReference.cache
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.csprojAssemblyReference.cache
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.dll
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.pdb
