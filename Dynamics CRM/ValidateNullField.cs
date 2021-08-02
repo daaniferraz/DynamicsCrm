@@ -17,5 +17,15 @@ namespace Dynamics_CRM
             }
 
         }
+        public void ValidationMoney(Entity item, Entity entidade, string variavel)
+        {
+            if (item.Attributes.Contains(variavel))
+            {
+                entidade.Attributes.Add(variavel, (Money)item[variavel]);
+                               
+            }
+
+        }
+
     }
 }

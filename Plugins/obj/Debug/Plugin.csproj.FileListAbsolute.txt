@@ -13,3 +13,6 @@ C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\obj\Debug\Plugi
 D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.csprojAssemblyReference.cache
 D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.dll
 D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.pdb
+C:\Users\danie\source\repos\Dynamics CRM\Plugins\obj\Debug\Plugin.csproj.AssemblyReference.cache
+C:\Users\danie\source\repos\Dynamics CRM\Plugins\obj\Debug\Plugin.dll
+C:\Users\danie\source\repos\Dynamics CRM\Plugins\obj\Debug\Plugin.pdb

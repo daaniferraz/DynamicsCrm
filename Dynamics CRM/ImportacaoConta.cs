@@ -26,6 +26,7 @@ namespace Dynamics_CRM
                              <attribute name='address1_stateorprovince' />
                              <attribute name='address1_country' />   
                              <attribute name='emailaddress1' />
+                             <attribute name='creditlimit' />
                              </entity>
                             </fetch>";
 
@@ -72,6 +73,7 @@ namespace Dynamics_CRM
                     string state = "address1_stateorprovince";
                     string contry = "address1_country";
                     string email = "emailaddress1";
+                    string cred = "creditlimit";
 
                     if (col.Entities.Count == 0)
                     {
@@ -87,6 +89,7 @@ namespace Dynamics_CRM
                         validar.Validation(item, entidade, state);
                         validar.Validation(item, entidade, contry);
                         validar.Validation(item, entidade, email);
+                        validar.ValidationMoney(item, entidade, cred);
                         
                         registro = conection.Create(entidade);
 
