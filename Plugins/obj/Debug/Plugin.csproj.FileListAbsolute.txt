@@ -16,3 +16,12 @@ D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.pdb
 C:\Users\danie\source\repos\Dynamics CRM\Plugins\obj\Debug\Plugin.csproj.AssemblyReference.cache
 C:\Users\danie\source\repos\Dynamics CRM\Plugins\obj\Debug\Plugin.dll
 C:\Users\danie\source\repos\Dynamics CRM\Plugins\obj\Debug\Plugin.pdb
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\bin\Debug\Plugin.dll.config
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\bin\Debug\Plugin.dll
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\bin\Debug\Plugin.pdb
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Sdk.dll
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Sdk.xml
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.CoreCompileInputs.cache
+D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.CopyComplete
