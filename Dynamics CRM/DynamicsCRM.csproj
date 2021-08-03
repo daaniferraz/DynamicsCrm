@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coloring.cs" />
     <Compile Include="ConexaoCrm.cs" />
     <Compile Include="ConexaoImport.cs" />
     <Compile Include="CreateEntidade.cs" />
