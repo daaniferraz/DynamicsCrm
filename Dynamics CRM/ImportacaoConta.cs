@@ -57,7 +57,7 @@ namespace Dynamics_CRM
                                     </filter>
                                 </entity>
                             </fetch>";
-
+                    //teste
                     query2 = string.Format(query2, nome.ToString(), cpf.ToString());
 
                     EntityCollection col = conection.RetrieveMultiple(new FetchExpression(query2));
