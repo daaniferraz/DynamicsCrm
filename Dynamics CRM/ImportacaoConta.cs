@@ -62,14 +62,14 @@ namespace Dynamics_CRM
 
                     EntityCollection col = conection.RetrieveMultiple(new FetchExpression(query2));
 
-                    string tel = "telephone1";
-                    string add1 = "address1_line1";
-                    string post = "address1_postalcode";
-                    string city = "address1_city";
-                    string state = "address1_stateorprovince";
-                    string contry = "address1_country";
-                    string email = "emailaddress1";
-                    string cred = "creditlimit";
+                    //string tel = "telephone1";
+                    //string add1 = "address1_line1";
+                    //string post = "address1_postalcode";
+                    //string city = "address1_city";
+                    //string state = "address1_stateorprovince";
+                    //string contry = "address1_country";
+                    //string email = "emailaddress1";
+                    //string cred = "creditlimit";
 
                     if (col.Entities.Count == 0)
                     {
