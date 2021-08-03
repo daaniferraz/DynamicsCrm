@@ -25,3 +25,14 @@ D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\bin\Debug\Microsoft.Crm.Sdk.Pr
 D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Sdk.xml
 D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.CoreCompileInputs.cache
 D:\pedro\Documents\Estudos C#\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.CopyComplete
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\bin\Debug\Plugin.dll.config
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\bin\Debug\Plugin.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\bin\Debug\Plugin.pdb
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.CoreCompileInputs.cache
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.CopyComplete
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\obj\Debug\Plugin.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\obj\Debug\Plugin.pdb

@@ -91,8 +91,10 @@
   <ItemGroup>
     <Compile Include="ConexaoCrm.cs" />
     <Compile Include="ConexaoImport.cs" />
+    <Compile Include="CreateEntidade.cs" />
     <Compile Include="ImportacaoConta.cs" />
     <Compile Include="ImportacaoLeads.cs" />
+    <Compile Include="ImportacaoPedido.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidateNullField.cs" />

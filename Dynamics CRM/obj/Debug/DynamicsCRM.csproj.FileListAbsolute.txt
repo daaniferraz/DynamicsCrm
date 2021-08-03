@@ -73,3 +73,27 @@ D:\pedro\Documents\Estudos C#\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM.csp
 D:\pedro\Documents\Estudos C#\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CopyComplete
 D:\pedro\Documents\Estudos C#\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.exe
 D:\pedro\Documents\Estudos C#\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.pdb
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Dynamics CRM.exe.config
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Dynamics CRM.exe
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Dynamics CRM.pdb
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Rest.ClientRuntime.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Deployment.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Workflow.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Tooling.Connector.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Newtonsoft.Json.dll
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Deployment.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Workflow.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Microsoft.Xrm.Tooling.Connector.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\bin\Debug\Newtonsoft.Json.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CoreCompileInputs.cache
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CopyComplete
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.exe
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.pdb

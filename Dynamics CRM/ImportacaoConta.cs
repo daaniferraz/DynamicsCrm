@@ -15,6 +15,7 @@ namespace Dynamics_CRM
         public void ImportarConta(CrmServiceClient CrmImport)
 
         {
+            CreateEntidade createEntidade = new CreateEntidade();
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
                             <entity name='account'>
                              <attribute name='name' />
@@ -36,24 +37,19 @@ namespace Dynamics_CRM
 
             foreach (var item in colecao.Entities)
             {
+                //ntity entityValidate = item.Attribute;
                 try
                 {
                     
                     var entidade = new Entity("account");
-
-                    Guid registro = new Guid();
-                                       
 
                     var nome = item["name"].ToString();
                     var cpf = item["drf_cpfcnpj"].ToString();
 
                     string query2 = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
                                 <entity name='account'>
-
                                    <attribute name='name' />
                                    <attribute name='grp3_cpfcnpj' />
-                                   
-
                                     <order attribute='name' descending='false' />
                                     <filter type='and'>
                                         <condition attribute='name' operator='eq' value= '{0}'/>
@@ -77,7 +73,12 @@ namespace Dynamics_CRM
 
                     if (col.Entities.Count == 0)
                     {
-                        var validar = new ValidateNullField();
+                        //foreach (Entity entityValidate colecao.Entities)
+                        //{
+                            Guid registro = new Guid();
+                            createEntidade.CreateEntidades(item, "account", conection, registro);
+                        //}
+                        /*var validar = new ValidateNullField();
 
                         entidade.Attributes.Add("name", item["name"].ToString());
                         entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
@@ -91,20 +92,19 @@ namespace Dynamics_CRM
                         validar.Validation(item, entidade, email);
                         validar.ValidationMoney(item, entidade, cred);
                         
-                        registro = conection.Create(entidade);
+                        registro = conection.Create(entidade);*/
 
                     }
-                    else
-                    {
-
-                        throw new Exception();
-                    }
-
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    var entidadeErro = new Entity("grp3_erroimportacao");
 
-                    Console.WriteLine("Erro importação");
+                    entidadeErro.Attributes.Add("grp3_nomeentidade", "Conta");
+                    entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
+
+                    conection.Create(entidadeErro);
+                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");
                 }
 
             }

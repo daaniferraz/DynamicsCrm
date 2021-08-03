@@ -17,9 +17,10 @@ namespace Dynamics_CRM
             var CrmImport = new ConexaoImport().Obter();
             var CrmNew = new ConexaoCrm().Obter();
             var ImportarContaCrmTerceiro = new ImportacaoConta();
-
+            ImportacaoPedido importacaoPedido = new ImportacaoPedido();
 
             ImportarContaCrmTerceiro.ImportarConta(CrmImport);
+            importacaoPedido.ImportarPedido(CrmImport);
 
 
             Console.WriteLine("Fim de Execução");
