@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 namespace Dynamics_CRM
 {
     class ImportacaoConta
-        
+
     {
         public void ImportarConta(CrmServiceClient CrmImport)
 
         {
             CreateEntidade createEntidade = new CreateEntidade();
+
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
                             <entity name='account'>
                              <attribute name='name' />
@@ -32,7 +33,7 @@ namespace Dynamics_CRM
                             </fetch>";
 
             EntityCollection colecao = CrmImport.RetrieveMultiple(new FetchExpression(query));
-            
+
             var conection = new ConexaoCrm().Obter();
 
             foreach (var item in colecao.Entities)
@@ -40,7 +41,7 @@ namespace Dynamics_CRM
                 //ntity entityValidate = item.Attribute;
                 try
                 {
-                    
+
                     var entidade = new Entity("account");
 
                     var nome = item["name"].ToString();
@@ -62,37 +63,12 @@ namespace Dynamics_CRM
 
                     EntityCollection col = conection.RetrieveMultiple(new FetchExpression(query2));
 
-                    //string tel = "telephone1";
-                    //string add1 = "address1_line1";
-                    //string post = "address1_postalcode";
-                    //string city = "address1_city";
-                    //string state = "address1_stateorprovince";
-                    //string contry = "address1_country";
-                    //string email = "emailaddress1";
-                    //string cred = "creditlimit";
 
                     if (col.Entities.Count == 0)
                     {
-                        //foreach (Entity entityValidate colecao.Entities)
-                        //{
-                            Guid registro = new Guid();
-                            createEntidade.CreateEntidades(item, "account", conection, registro);
-                        //}
-                        /*var validar = new ValidateNullField();
 
-                        entidade.Attributes.Add("name", item["name"].ToString());
-                        entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
-
-                        validar.Validation(item, entidade, tel);
-                        validar.Validation(item, entidade, add1);
-                        validar.Validation(item, entidade, post);
-                        validar.Validation(item, entidade, city);
-                        validar.Validation(item, entidade, state);
-                        validar.Validation(item, entidade, contry);
-                        validar.Validation(item, entidade, email);
-                        validar.ValidationMoney(item, entidade, cred);
-                        
-                        registro = conection.Create(entidade);*/
+                        Guid registro = new Guid();
+                        createEntidade.CreateEntidades(item, "account", conection, registro);
 
                     }
                 }

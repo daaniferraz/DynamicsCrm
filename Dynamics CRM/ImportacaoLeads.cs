@@ -1,80 +1,93 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xrm.Sdk;
+﻿using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Tooling.Connector;
-
+using System;
 
 
 namespace Dynamics_CRM
 {
     class ImportacaoLeads
     {
-        public void ImportarConta(CrmServiceClient CrmImport)
+        public void ImportarLeads(CrmServiceClient CrmImport)
 
         {
+            CreateEntidade createEntidade = new CreateEntidade();
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
-                            <entity name='clientepotenciallead'>
-                             <attribute name='name' />
-                             <attribute name='drf_cpfcnpj' />
+                            <entity name='drf_clientepotenciallead'>
+                             <attribute name='drf_nome' />
+                             <attribute name='drf_cpfoucnpj' />
+                             <attribute name='drf_cpf' />
+                             <attribute name='drf_cnpj' />
+                             <attribute name='drf_cep' />
+                             <attribute name='drf_endereco' />
+                             <attribute name='drf_complemento' />
+                             <attribute name='drf_bairro' />
+                             <attribute name='drf_telefone' />
+                             <attribute name='drf_telefone2' />
                              </entity>
                             </fetch>";
 
             EntityCollection colecao = CrmImport.RetrieveMultiple(new FetchExpression(query));
-            var conection = new ConexaoCrm().Obter();
+            var conectionTo = new ConexaoCrm().Obter();
 
             foreach (var item in colecao.Entities)
             {
                 try
                 {
-                    var entidade = new Entity("account");
+                    var entidade = new Entity("drf_clientepotenciallead");
+                    string cpfCnpj;
+                    string nameField;
 
-                    Guid registro = new Guid();
-
-                    var idImport = item.Id;
-
-                    var nome = item["name"].ToString();
-                    var cpf = item["drf_cpfcnpj"].ToString();
-
+                    var nome = item["drf_nome"].ToString();
+                    
+                    if (item.Attributes.Contains("drf_cpf"))
+                    {
+                        cpfCnpj = item["drf_cpf"].ToString();
+                        nameField = "grp3_cpf";
+                    }
+                    else
+                    {
+                        cpfCnpj = item["drf_cnpj"].ToString();
+                        nameField = "grp3_cnpj";
+                    }
 
 
                     string query2 = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
-                                <entity name='clientepotenciallead'>
-                                    <attribute name='name'/>
+                                <entity name='grp3_clientepotenciallead'>
+                                    <attribute name='grp3_nome'/>
                                     <attribute name='grp3_cpf'/>
-                                    <order attribute='name' descending='false' />
-                                    <filter type='and'>
-                                        <condition attribute='name' operator='eq' value= '{0}'/>
-                                        <condition attribute='grp3_cpf' operator='eq' value= '{1}'/>                               
-                                    </filter>
+                                    <attribute name='grp3_cnpj'/>
+                                    <order attribute='grp3_nome' descending='false' />
+                                      <filter type='and'>
+                                        <condition attribute='grp3_nome' operator='eq' value= '{0}'/>
+                                        <condition attribute='{1}' operator='eq' value= '{2}'/>
+                                      </filter>                                                 
                                 </entity>
                             </fetch>";
-                    query2 = string.Format(query2, nome.ToString(), cpf.ToString());
+                    query2 = string.Format(query2, nome.ToString(),nameField,cpfCnpj.ToString());
 
-                    EntityCollection col = conection.RetrieveMultiple(new FetchExpression(query2));
+                    EntityCollection col = conectionTo.RetrieveMultiple(new FetchExpression(query2));
 
 
                     if (col.Entities.Count == 0)
                     {
-                        entidade.Attributes.Add("name", item["name"].ToString());
-                        entidade.Attributes.Add("grp3_cpf", item["drf_cpfcnpj"].ToString());
-                        registro = conection.Create(entidade);
+                        Guid registro = new Guid();
+                        createEntidade.CreateEntidades(item, "grp3_clientepotenciallead", conectionTo, registro);
 
                     }
-                    else
-                    {
 
-                        throw new Exception();
-                    }
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
-                    Console.WriteLine("Log");
+                    var entidadeErro = new Entity("grp3_erroimportacao");
+
+                    entidadeErro.Attributes.Add("grp3_nomeentidade", "Lead");
+                    entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
+
+                    conectionTo.Create(entidadeErro);
+                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");
                 }
 
 
@@ -87,10 +100,6 @@ namespace Dynamics_CRM
                 //}
                 //else
                 //    entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
-
-
-
-
 
 
             }

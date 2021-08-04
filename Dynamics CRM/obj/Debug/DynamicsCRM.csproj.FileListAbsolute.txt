@@ -43,7 +43,6 @@ C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sd
 C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Workflow.xml
 C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\bin\Debug\Microsoft.Xrm.Tooling.Connector.xml
 C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\bin\Debug\Newtonsoft.Json.xml
-C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.AssemblyReference.cache
 C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CoreCompileInputs.cache
 C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CopyComplete
 C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\obj\Debug\Dynamics CRM.exe
