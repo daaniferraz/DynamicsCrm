@@ -96,3 +96,4 @@ C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM
 C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CopyComplete
 C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.exe
 C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.pdb
+C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.AssemblyReference.cache

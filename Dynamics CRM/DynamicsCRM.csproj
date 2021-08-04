@@ -94,6 +94,7 @@
     <Compile Include="ConexaoImport.cs" />
     <Compile Include="CreateEntidade.cs" />
     <Compile Include="ImportacaoConta.cs" />
+    <Compile Include="ImportacaoContato.cs" />
     <Compile Include="ImportacaoLeads.cs" />
     <Compile Include="ImportacaoPedido.cs" />
     <Compile Include="Program.cs" />

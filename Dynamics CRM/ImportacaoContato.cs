@@ -3,11 +3,9 @@ using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Tooling.Connector;
 using System;
 
-
 namespace Dynamics_CRM
 {
-    class ImportacaoConta
-
+    class ImportacaoContato
     {
         public void ImportarConta(CrmServiceClient CrmImport)
 
@@ -15,17 +13,19 @@ namespace Dynamics_CRM
             CreateEntidade createEntidade = new CreateEntidade();
 
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
-                            <entity name='account'>
-                             <attribute name='name' />
-                             <attribute name='drf_cpfcnpj' />
-                             <attribute name='telephone1' />
+                            <entity name='contact'>
+                             <attribute name='firstname' />
+                             <attribute name='lastname' />
+                             <attribute name='drf_cpf' />
+                             <attribute name='jobtitle' />
+                             <attribute name='mobilephone' />
+                             <attribute name='drf_idade' />
                              <attribute name='address1_line1' />
-                             <attribute name='address1_postalcode' />
                              <attribute name='address1_city' />
-                             <attribute name='address1_stateorprovince' />
-                             <attribute name='address1_country' />   
+                             <attribute name='address1_stateorprovince' />   
                              <attribute name='emailaddress1' />
-                             <attribute name='creditlimit' />
+                             <attribute name='address1_postalcode' />
+                             <attribute name='address1_country' />
                              </entity>
                             </fetch>";
 
@@ -35,23 +35,23 @@ namespace Dynamics_CRM
 
             foreach (var item in colecao.Entities)
             {
-                //ntity entityValidate = item.Attribute;
+                
                 try
                 {
 
-                    var entidade = new Entity("account");
+                    var entidade = new Entity("contact");
 
-                    var nome = item["name"].ToString();
-                    var cpf = item["drf_cpfcnpj"].ToString();
+                    var nome = item["firstname"].ToString();
+                    var cpf = item["drf_cpf"].ToString();
 
                     string query2 = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
-                                <entity name='account'>
-                                   <attribute name='name' />
-                                   <attribute name='grp3_cpfcnpj' />
-                                    <order attribute='name' descending='false' />
+                                <entity name='contact'>
+                                   <attribute name='firstname' />
+                                   <attribute name='grp3_cpf' />
+                                    <order attribute='firstname' descending='false' />
                                     <filter type='and'>
-                                        <condition attribute='name' operator='eq' value= '{0}'/>
-                                        <condition attribute='grp3_cpfcnpj' operator='eq' value= '{1}'/>                               
+                                        <condition attribute='firstname' operator='eq' value= '{0}'/>
+                                        <condition attribute='grp3_cpf' operator='eq' value= '{1}'/>                               
                                     </filter>
                                 </entity>
                             </fetch>";
@@ -65,7 +65,7 @@ namespace Dynamics_CRM
                     {
 
                         Guid registro = new Guid();
-                        createEntidade.CreateEntidades(item, "account", conection, registro);
+                        createEntidade.CreateEntidades(item, "contact", conection, registro);
 
                     }
                 }
@@ -73,7 +73,7 @@ namespace Dynamics_CRM
                 {
                     var entidadeErro = new Entity("grp3_erroimportacao");
 
-                    entidadeErro.Attributes.Add("grp3_nomeentidade", "Conta");
+                    entidadeErro.Attributes.Add("grp3_nomeentidade", "Contato");
                     entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
 
                     conection.Create(entidadeErro);
@@ -81,7 +81,6 @@ namespace Dynamics_CRM
                 }
 
             }
-
         }
-    }
+        }
 }
