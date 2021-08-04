@@ -32,6 +32,7 @@ namespace Dynamics_CRM
             EntityCollection colecao = CrmImport.RetrieveMultiple(new FetchExpression(query));
 
             var conection = new ConexaoCrm().Obter();
+            string nameEntity = "account";
 
             foreach (var item in colecao.Entities)
             {
@@ -65,19 +66,23 @@ namespace Dynamics_CRM
                     {
 
                         Guid registro = new Guid();
-                        createEntidade.CreateEntidades(item, "account", conection, registro);
+                        createEntidade.CreateEntidades(item, nameEntity, conection, registro);
 
                     }
                 }
                 catch (Exception ex)
                 {
-                    var entidadeErro = new Entity("grp3_erroimportacao");
+                    Guid registro = new Guid();
+
+                    createEntidade.CreateErrorException(ex, nameEntity, conection, registro);
+
+                    /*var entidadeErro = new Entity("grp3_erroimportacao");
 
                     entidadeErro.Attributes.Add("grp3_nomeentidade", "Conta");
                     entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
 
                     conection.Create(entidadeErro);
-                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");
+                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
                 }
 
             }

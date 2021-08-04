@@ -63,5 +63,18 @@ namespace Dynamics_CRM
 
             return registro;
         }
+
+        public Guid CreateErrorException(Exception ex, string nameEntityCreate, CrmServiceClient conectionTo, Guid registro)
+        {
+            var entidadeErro = new Entity("grp3_erroimportacao");
+
+            entidadeErro.Attributes.Add("grp3_nomeentidade", nameEntityCreate);
+            entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
+
+            conectionTo.Create(entidadeErro);
+            Console.WriteLine("Erro gerado e gravado na tabela de erros.");
+
+            return registro;
+        }
     }
 }

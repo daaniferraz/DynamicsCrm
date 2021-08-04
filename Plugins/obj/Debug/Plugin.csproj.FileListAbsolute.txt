@@ -37,3 +37,4 @@ C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.Co
 C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\obj\Debug\Plugin.dll
 C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\obj\Debug\Plugin.pdb
 C:\Users\erick\Documents\GitHub\TCC-Dynamics\DynamicsTcc\Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Plugins\obj\Debug\Plugin.csproj.AssemblyReference.cache

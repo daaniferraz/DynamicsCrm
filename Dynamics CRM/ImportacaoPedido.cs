@@ -23,6 +23,7 @@ namespace Dynamics_CRM
             EntityCollection colecaoFrom = CrmImport.RetrieveMultiple(new FetchExpression(query));
 
             var conectionTo = new ConexaoCrm().Obter();
+            string nameEntity = "grp3_pedidos";
 
             foreach (var item in colecaoFrom.Entities)
             {
@@ -49,18 +50,22 @@ namespace Dynamics_CRM
 
                     if (col.Entities.Count == 0)
                     {
-                        registro = createEntidade.CreateEntidades(item, "grp3_pedidos", conectionTo, registro);
+                        registro = createEntidade.CreateEntidades(item, nameEntity, conectionTo, registro);
                     }
                 }
                 catch (Exception ex)
-                {
-                    var entidadeErro = new Entity("grp3_erroimportacao");
+                {                    
+                    Guid registro = new Guid();
+
+                    createEntidade.CreateErrorException(ex, nameEntity, conectionTo, registro);
+                    
+                    /*var entidadeErro = new Entity("grp3_erroimportacao");
 
                     entidadeErro.Attributes.Add("grp3_nomeentidade", "Pedido");
                     entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
 
                     conectionTo.Create(entidadeErro);
-                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");
+                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
                 }
             }
         }
@@ -69,6 +74,8 @@ namespace Dynamics_CRM
         #region ItensPedido
         public void ImportarItensPedido(CrmServiceClient CrmImport)
         {
+            CreateEntidade createEntidade = new CreateEntidade();
+
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
                             <entity name='drf_itenspedidos'>
                                 <attribute name='drf_idpedido' />
@@ -85,12 +92,12 @@ namespace Dynamics_CRM
 
             var conectionTo = new ConexaoCrm().Obter();
 
+            string nameEntity = "grp3_itenspedidos";
+
             foreach (var item in colecaoFrom.Entities)
             {
                 try
                 {
-                    CreateEntidade createEntidade = new CreateEntidade();
-
                     var entidade = new Entity("grp3_itenspedidos");
 
                     Guid registro = new Guid();
@@ -127,13 +134,17 @@ namespace Dynamics_CRM
                 }
                 catch (Exception ex)
                 {
-                    var entidadeErro = new Entity("grp3_erroimportacao");
+                    Guid registro = new Guid();
+
+                    createEntidade.CreateErrorException(ex, nameEntity, conectionTo, registro);
+
+                    /*var entidadeErro = new Entity("grp3_erroimportacao");
 
                     entidadeErro.Attributes.Add("grp3_nomeentidade", "ItensPedido");
                     entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
 
                     conectionTo.Create(entidadeErro);
-                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");
+                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
                 }
             }
         }
@@ -142,6 +153,8 @@ namespace Dynamics_CRM
         #region Produtos
         public void CheckImportProdutos(CrmServiceClient CrmImportTo, string IdItem, string nomeItem)
         {
+            CreateEntidade createEntidade = new CreateEntidade();
+
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
                             <entity name='grp3_produtos'>
                                 <attribute name='grp3_iditem' />
@@ -161,10 +174,12 @@ namespace Dynamics_CRM
                 return;
             }
 
+            string nameEntity = "grp3_produtos";
+
             try
             {
 
-                var entidadeProduto = new Entity("grp3_produtos");
+                var entidadeProduto = new Entity(nameEntity);
 
                 entidadeProduto.Attributes.Add("grp3_nomeitem", nomeItem);
                 entidadeProduto.Attributes.Add("grp3_iditem", Convert.ToInt32(IdItem));
@@ -174,12 +189,16 @@ namespace Dynamics_CRM
             }
             catch (Exception ex)
             {
-                var entidadeErro = new Entity("grp3_erroimportacao");
+                Guid registro = new Guid();
+
+                createEntidade.CreateErrorException(ex, nameEntity, CrmImportTo, registro);
+
+                /*var entidadeErro = new Entity("grp3_erroimportacao");
                 entidadeErro.Attributes.Add("grp3_nomeentidade", "ItensPedido");
                 entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
 
                 CrmImportTo.Create(entidadeErro);
-                Console.WriteLine("Erro gerado e gravado na tabela de erros.");
+                Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
             }
         }
         #endregion
