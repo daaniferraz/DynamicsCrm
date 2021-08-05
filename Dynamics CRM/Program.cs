@@ -17,16 +17,17 @@ namespace Dynamics_CRM
             var CrmImport = new ConexaoImport().Obter();
             var CrmNew = new ConexaoCrm().Obter();
 
-            //ImportacaoLeads importacaoLead = new ImportacaoLeads();
-            // ImportarContaCrmTerceiro = new ImportacaoConta();
-            //ImportacaoPedido importacaoPedido = new ImportacaoPedido();
+            ImportacaoLeads importacaoLead = new ImportacaoLeads();
+            ImportacaoConta ImportarContaCrmTerceiro = new ImportacaoConta();
+            ImportacaoPedido importacaoPedido = new ImportacaoPedido();
             ImportacaoContato importacaoContato = new ImportacaoContato();
 
-            //ImportarContaCrmTerceiro.ImportarConta(CrmImport);
+            ImportarContaCrmTerceiro.ImportarConta(CrmImport);
             importacaoContato.ImportarConta(CrmImport);
-            //importacaoLead.ImportarLeads(CrmImport);
+            importacaoLead.ImportarLeads(CrmImport);
+            
             //importacaoPedido.ImportarPedido(CrmImport);
-
+            //importacaoPedido.ImportarItensPedido(CrmImport);
             //TesteErick(CrmNew);
 
             Console.WriteLine("Fim de Execução");

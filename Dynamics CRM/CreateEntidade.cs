@@ -47,6 +47,10 @@ namespace Dynamics_CRM
                             createRecord = true;
                             break;*/
                         case "EntityReference":
+                            if (checkValueField.ToString() != "transactioncurrencyid")
+                            {
+                                entidade.Attributes.Add(checkValueField, attributesValidate.Value);
+                            }
                             break;
                         default:
                         entidade.Attributes.Add(checkValueField, attributesValidate.Value);

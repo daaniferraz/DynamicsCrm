@@ -13,16 +13,16 @@ namespace Dynamics_CRM
             CreateEntidade createEntidade = new CreateEntidade();
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
                             <entity name='drf_pedidos'>                             
-                             <attribute name='drf_idpedido' />
+                             <attribute name='drf_pedido' />
                              <attribute name='drf_idlead' />
                              <attribute name='drf_nomedocliente' />
-                             <attribute name='drf_valordopedido' />                             
+                             <attribute name='drf_valordopedido' />
                              </entity>
                             </fetch>";
 
             EntityCollection colecaoFrom = CrmImport.RetrieveMultiple(new FetchExpression(query));
 
-            var conectionTo = new ConexaoCrm().Obter();
+            var conectionTo = new ConexaoCrm().Obter();            
             string nameEntity = "grp3_pedidos";
 
             foreach (var item in colecaoFrom.Entities)
@@ -33,18 +33,18 @@ namespace Dynamics_CRM
 
                     string query2 = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
                                 <entity name='grp3_pedidos'>                                        
-                                        <attribute name='grp3_idpedido' />
+                                        <attribute name='grp3_pedido' />
                                         <attribute name='grp3_idlead' />
                                         <attribute name='grp3_nomedocliente' />
-                                        <attribute name='grp3_valordopedido' />      
-                                    <order attribute='grp3_idpedido' descending='false' />
+                                        <attribute name='grp3_valordopedido' />                                              
+                                    <order attribute='grp3_pedido' descending='false' />
                                     <filter type='and'>
-                                        <condition attribute='grp3_idpedido' operator='eq' value= '{0}'/>                                                                      
+                                        <condition attribute='grp3_pedido' operator='eq' value= '{0}'/>                                                                                                              
                                     </filter>
                                 </entity>
                             </fetch>";
 
-                    query2 = string.Format(query2, item["drf_idpedido"].ToString());
+                    query2 = string.Format(query2, item["drf_pedido"].ToString());
 
                     EntityCollection col = conectionTo.RetrieveMultiple(new FetchExpression(query2));
 
@@ -78,13 +78,14 @@ namespace Dynamics_CRM
 
             string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
                             <entity name='drf_itenspedidos'>
-                                <attribute name='drf_idpedido' />
+                                <attribute name='drf_pedido' />
                                 <attribute name='drf_iditem' />                                
                                 <attribute name='drf_nomedoitem' />
                                 <attribute name='drf_quantidade' />      
                                 <attribute name='drf_unidadedevenda' />
                                 <attribute name='drf_valorunitario' />
-                                <attribute name='drf_valortotal' />                              
+                                <attribute name='drf_valortotal' /> 
+                                <attribute name='drf_seqitemterceiro' />
                              </entity>
                             </fetch>";
 
@@ -104,7 +105,7 @@ namespace Dynamics_CRM
 
                     string query2 = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
                                     <entity name='grp3_itenspedidos'>
-                                        <attribute name='grp3_idpedido' />
+                                        <attribute name='grp3_pedido' />
                                         <attribute name='grp3_iditem' />                                
                                         <attribute name='grp3_nomedoitem' />
                                         <attribute name='grp3_quantidade' />      
@@ -112,15 +113,18 @@ namespace Dynamics_CRM
                                         <attribute name='grp3_valorunitario' />
                                         <attribute name='grp3_valortotal' />
                                         <attribute name='grp3_seqitemterceiro' />
-                                    <order attribute='grp3_idpedido' descending='false' />
+                                    <order attribute='grp3_pedido' descending='false' />
                                     <filter type='and'>
-                                        <condition attribute='grp3_idpedido' operator='eq' value= '{0}'/>                                                                      
+                                        <condition attribute='grp3_pedido' operator='eq' value= '{0}'/>                                                                      
                                         <condition attribute='grp3_seqitemterceiro' operator='eq' value= '{1}'/>
                                     </filter>
                                 </entity>
                             </fetch>";
 
-                    query2 = string.Format(query2, item["drf_idpedido"].ToString(), item["drf_seqitemterceiro"].ToString());
+                    EntityReference newPedido = item.GetAttributeValue<EntityReference>("drf_pedido");
+                    Guid guidNewPedido = newPedido.Id;
+
+                    query2 = string.Format(query2, guidNewPedido, item["drf_seqitemterceiro"].ToString());
 
                     EntityCollection col = conectionTo.RetrieveMultiple(new FetchExpression(query2));
 
