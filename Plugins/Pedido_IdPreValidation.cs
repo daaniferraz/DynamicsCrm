@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
+using System.ServiceModel;
 using PluginStepValidation;
 
 namespace Plugin
@@ -27,33 +28,42 @@ namespace Plugin
                 //saber o que já foi executado do plugin se usado essa função como debug.
                 var trace = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
 
-                trace.Trace("Iniciando o plugin para validar se o ID não é duplicado");
-
-                //Criando uma entidade que vai ser usada para receber os dados do power apps ao clicar em salvar.
-                Entity CrmTargetEntity = null;
-
-                //Verifica se existe um "Target" previamente definido no XRMToolBox
-                if (context.InputParameters.Contains("Target"))
+                try
                 {
-                    //Caso exista, atribuir a entidade desse "Target" para a variavel de entidade que criamos logo a cima.
-                    CrmTargetEntity = (Entity)context.InputParameters["Target"];
+                    trace.Trace("Iniciando o plugin para validar se o ID não é duplicado");
+
+                    //Criando uma entidade que vai ser usada para receber os dados do power apps ao clicar em salvar.
+                    Entity CrmTargetEntity = null;
+
+                    //Verifica se existe um "Target" previamente definido no XRMToolBox
+                    if (context.InputParameters.Contains("Target"))
+                    {
+                        //Caso exista, atribuir a entidade desse "Target" para a variavel de entidade que criamos logo a cima.
+                        CrmTargetEntity = (Entity)context.InputParameters["Target"];
+                    }
+
+                    //Criamos uma Query do tipo que estamos tratando no Plugin
+                    QueryExpression queryExpression = new QueryExpression("grp3_pedidos");
+                    //E adicionamos um critério de filtro para a mesma, para definir o que ela irá carregar.
+                    queryExpression.Criteria.AddCondition("grp3_pedido", ConditionOperator.Equal, CrmTargetEntity.Attributes["grp3_pedido"].ToString());
+                    //Mandamos então buscar as entidades no sistema que atentam o critério pré definido a cima e então adicionamos em uma coleção de entidades.
+                    EntityCollection colecaoEntidades = service.RetrieveMultiple(queryExpression);
+
+
+                    //Caso seja retornado alguma entidade na condição a cima, quer dizer que o dado que estamos validando
+                    //já está cadastrado no sistema, entrando assim então na condição a baixo e impedindo o registro duplicado.
+                    if (colecaoEntidades.Entities.Count > 0)
+                    {
+                        //Joga uma exceção que irá impedir o dado de ser salvo, junto com a mensagem de erro do motivo.
+                        throw new InvalidPluginExecutionException("O ID do Pedido, já está cadastrado no sistema.");
+                    }
+                }
+                catch (FaultException<OrganizationServiceFault> ex)
+                {
+                    throw new InvalidPluginExecutionException("Um erro ocorreu com o Plugin de validação de ID do Pedido Duplicado! Se possível contate o suporte. Ex: " + ex.ToString());
                 }
 
-                //Criamos uma Query do tipo que estamos tratando no Plugin
-                QueryExpression queryExpression = new QueryExpression("grp3_pedidos");
-                //E adicionamos um critério de filtro para a mesma, para definir o que ela irá carregar.
-                queryExpression.Criteria.AddCondition("grp3_pedido", ConditionOperator.Equal, CrmTargetEntity.Attributes["grp3_pedido"].ToString());
-                //Mandamos então buscar as entidades no sistema que atentam o critério pré definido a cima e então adicionamos em uma coleção de entidades.
-                EntityCollection colecaoEntidades = service.RetrieveMultiple(queryExpression);
-
-
-                //Caso seja retornado alguma entidade na condição a cima, quer dizer que o dado que estamos validando
-                //já está cadastrado no sistema, entrando assim então na condição a baixo e impedindo o registro duplicado.
-                if(colecaoEntidades.Entities.Count > 0)
-                {
-                    //Joga uma exceção que irá impedir o dado de ser salvo, junto com a mensagem de erro do motivo.
-                    throw new InvalidPluginExecutionException("O ID do Pedido, já está cadastrado no sistema.");
-                }
+               
             }
             
         }
