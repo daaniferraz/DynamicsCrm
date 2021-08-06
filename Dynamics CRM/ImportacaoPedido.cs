@@ -17,6 +17,8 @@ namespace Dynamics_CRM
                              <attribute name='drf_idlead' />
                              <attribute name='drf_nomedocliente' />
                              <attribute name='drf_valordopedido' />
+                             <attribute name='drf_formadepagamento' />
+                             <attribute name='drf_parcelas' />
                              </entity>
                             </fetch>";
 
@@ -37,6 +39,8 @@ namespace Dynamics_CRM
                                         <attribute name='grp3_idlead' />
                                         <attribute name='grp3_nomedocliente' />
                                         <attribute name='grp3_valordopedido' />                                              
+                                        <attribute name='grp3_formadepagamento' />                                              
+                                        <attribute name='grp3_parcelas' />                                              
                                     <order attribute='grp3_pedido' descending='false' />
                                     <filter type='and'>
                                         <condition attribute='grp3_pedido' operator='eq' value= '{0}'/>                                                                                                              
