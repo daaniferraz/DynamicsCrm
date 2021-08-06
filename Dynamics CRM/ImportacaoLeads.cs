@@ -52,7 +52,6 @@ namespace Dynamics_CRM
                         nameField = "grp3_cnpj";
                     }
 
-
                     string query2 = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
                                 <entity name='grp3_clientepotenciallead'>
                                     <attribute name='grp3_nome'/>
@@ -69,45 +68,19 @@ namespace Dynamics_CRM
 
                     EntityCollection col = conectionTo.RetrieveMultiple(new FetchExpression(query2));
 
-
                     if (col.Entities.Count == 0)
                     {
                         Guid registro = new Guid();
                         createEntidade.CreateEntidades(item, nameEntity, conectionTo, registro);
-
                     }
-
-
                 }
                 catch (Exception ex)
                 {
                     Guid registro = new Guid();
 
                     createEntidade.CreateErrorException(ex, nameEntity, conectionTo, registro);
-
-                    /*var entidadeErro = new Entity("grp3_erroimportacao");
-
-                    entidadeErro.Attributes.Add("grp3_nomeentidade", "Lead");
-                    entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
-
-                    conectionTo.Create(entidadeErro);
-                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
                 }
-
-
-
-                //if (!(CrmImport.Retrieve("account", idImport, new ColumnSet("drf_cpfcnpj")).Attributes.Contains("drf_cpfcnpj")))
-                //{
-
-                //    entidade.Attributes.Add("grp3_cpfcnpj", "".ToString());
-
-                //}
-                //else
-                //    entidade.Attributes.Add("grp3_cpfcnpj", item["drf_cpfcnpj"].ToString());
-
-
             }
-
         }
     }
 }

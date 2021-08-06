@@ -26,9 +26,8 @@ namespace Dynamics_CRM
             importacaoContato.ImportarConta(CrmImport);
             importacaoLead.ImportarLeads(CrmImport);
             
-            //importacaoPedido.ImportarPedido(CrmImport);
-            //importacaoPedido.ImportarItensPedido(CrmImport);
-            //TesteErick(CrmNew);
+            importacaoPedido.ImportarPedido(CrmImport);
+            importacaoPedido.ImportarItensPedido(CrmImport);            
 
             Console.WriteLine("Fim de Execução");
 

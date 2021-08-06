@@ -45,7 +45,7 @@ namespace Dynamics_CRM
                     var nome = item["firstname"].ToString();
                     var cpf = item["drf_cpf"].ToString();
 
-                    string query2 = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
+                    string queryContact = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
                                 <entity name='contact'>
                                    <attribute name='firstname' />
                                    <attribute name='grp3_cpf' />
@@ -56,10 +56,10 @@ namespace Dynamics_CRM
                                     </filter>
                                 </entity>
                             </fetch>";
-                    //teste
-                    query2 = string.Format(query2, nome.ToString(), cpf.ToString());
 
-                    EntityCollection col = conection.RetrieveMultiple(new FetchExpression(query2));
+                    queryContact = string.Format(queryContact, nome.ToString(), cpf.ToString());
+
+                    EntityCollection col = conection.RetrieveMultiple(new FetchExpression(queryContact));
 
 
                     if (col.Entities.Count == 0)
@@ -74,14 +74,7 @@ namespace Dynamics_CRM
                 {
                     Guid registro = new Guid();
 
-                    createEntidade.CreateErrorException(ex, nameEntity, conection, registro);
-                    /*var entidadeErro = new Entity("grp3_erroimportacao");
-
-                    entidadeErro.Attributes.Add("grp3_nomeentidade", "Contato");
-                    entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
-
-                    conection.Create(entidadeErro);
-                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
+                    createEntidade.CreateErrorException(ex, nameEntity, conection, registro);                   
                 }
 
             }

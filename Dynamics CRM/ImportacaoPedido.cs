@@ -76,7 +76,7 @@ namespace Dynamics_CRM
         {
             CreateEntidade createEntidade = new CreateEntidade();
 
-            string query = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
+            string queryFromItens = @"<fetch version='1.0' output-format='xml-plataform' mapping='logical' distinct='true' >
                             <entity name='drf_itenspedidos'>
                                 <attribute name='drf_pedido' />
                                 <attribute name='drf_iditem' />                                
@@ -89,7 +89,7 @@ namespace Dynamics_CRM
                              </entity>
                             </fetch>";
 
-            EntityCollection colecaoFrom = CrmImport.RetrieveMultiple(new FetchExpression(query));
+            EntityCollection colecaoFrom = CrmImport.RetrieveMultiple(new FetchExpression(queryFromItens));
 
             var conectionTo = new ConexaoCrm().Obter();
 
@@ -101,9 +101,33 @@ namespace Dynamics_CRM
                 {
                     var entidade = new Entity("grp3_itenspedidos");
 
-                    Guid registro = new Guid();
+                    Guid registro = new Guid();                    
 
-                    string query2 = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
+                    EntityReference newPedido = item.GetAttributeValue<EntityReference>("drf_pedido");
+                    string pedidocompare = newPedido.Name;
+
+                    string queryPedido = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
+                                <entity name='grp3_pedidos'>                                        
+                                        <attribute name='grp3_pedido' />
+                                        <attribute name='grp3_idlead' />
+                                        <attribute name='grp3_nomedocliente' />
+                                        <attribute name='grp3_valordopedido' />                                              
+                                    <order attribute='grp3_pedido' descending='false' />
+                                    <filter type='and'>
+                                        <condition attribute='grp3_pedido' operator='eq' value= '{0}'/>                                                                                                              
+                                    </filter>
+                                </entity>
+                            </fetch>";
+
+                    queryPedido = string.Format(queryPedido, pedidocompare.ToString());
+                    EntityCollection colectionPedido = conectionTo.RetrieveMultiple(new FetchExpression(queryPedido));
+                    
+                    if (colectionPedido.Entities.Count == 1)
+                    {
+                        Guid guidItemPedido;
+                        EntityCollection colIntens;
+
+                        string queryItens = @"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>
                                     <entity name='grp3_itenspedidos'>
                                         <attribute name='grp3_pedido' />
                                         <attribute name='grp3_iditem' />                                
@@ -121,34 +145,30 @@ namespace Dynamics_CRM
                                 </entity>
                             </fetch>";
 
-                    EntityReference newPedido = item.GetAttributeValue<EntityReference>("drf_pedido");
-                    Guid guidNewPedido = newPedido.Id;
+                        Entity itemPedido = colectionPedido.Entities[0];
+                        guidItemPedido    = itemPedido.Id;
 
-                    query2 = string.Format(query2, guidNewPedido, item["drf_seqitemterceiro"].ToString());
+                        queryItens = string.Format(queryItens, guidItemPedido, item["drf_seqitemterceiro"].ToString());
 
-                    EntityCollection col = conectionTo.RetrieveMultiple(new FetchExpression(query2));
+                        colIntens = conectionTo.RetrieveMultiple(new FetchExpression(queryItens));
 
-                    if (col.Entities.Count == 0)
-                    {
-                        //valida se item existe na tabela produto e cria o item caso não tenha
-                        this.CheckImportProdutos(conectionTo, item["drf_iditem"].ToString(), item["drf_nomedoitem"].ToString());
+                        if (colIntens.Entities.Count == 0)
+                        {
+                            //valida se item existe na tabela produto e cria o item caso não tenha
+                            this.CheckImportProdutos(conectionTo, item["drf_iditem"].ToString(), item["drf_nomedoitem"].ToString());
 
-                        registro = createEntidade.CreateEntidades(item, "grp3_itenspedidos", conectionTo, registro);
-                    }
+                            createEntidade.getfieldName = "grp3_pedido";
+                            createEntidade.getfieldValue = guidItemPedido;
+
+                            registro = createEntidade.CreateEntidades(item, "grp3_itenspedidos", conectionTo, registro);
+                        }
+                    } 
                 }
                 catch (Exception ex)
                 {
                     Guid registro = new Guid();
 
                     createEntidade.CreateErrorException(ex, nameEntity, conectionTo, registro);
-
-                    /*var entidadeErro = new Entity("grp3_erroimportacao");
-
-                    entidadeErro.Attributes.Add("grp3_nomeentidade", "ItensPedido");
-                    entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
-
-                    conectionTo.Create(entidadeErro);
-                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
                 }
             }
         }
@@ -182,7 +202,6 @@ namespace Dynamics_CRM
 
             try
             {
-
                 var entidadeProduto = new Entity(nameEntity);
 
                 entidadeProduto.Attributes.Add("grp3_nomeitem", nomeItem);
@@ -194,15 +213,7 @@ namespace Dynamics_CRM
             catch (Exception ex)
             {
                 Guid registro = new Guid();
-
                 createEntidade.CreateErrorException(ex, nameEntity, CrmImportTo, registro);
-
-                /*var entidadeErro = new Entity("grp3_erroimportacao");
-                entidadeErro.Attributes.Add("grp3_nomeentidade", "ItensPedido");
-                entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
-
-                CrmImportTo.Create(entidadeErro);
-                Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
             }
         }
         #endregion

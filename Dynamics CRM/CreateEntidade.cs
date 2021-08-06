@@ -10,6 +10,8 @@ namespace Dynamics_CRM
 {
     class CreateEntidade
     {
+        private string fieldName;
+        private Guid   fieldValue;
         public Guid CreateEntidades(Entity item, String nameEntityCreate, CrmServiceClient conectionTo, Guid registro)
         {            
             var entidade = new Entity(nameEntityCreate);
@@ -47,9 +49,10 @@ namespace Dynamics_CRM
                             createRecord = true;
                             break;*/
                         case "EntityReference":
-                            if (checkValueField.ToString() != "transactioncurrencyid")
+                            if (checkValueField.ToString() == this.getfieldName && this.getfieldName.Length > 0)
                             {
-                                entidade.Attributes.Add(checkValueField, attributesValidate.Value);
+                                EntityReference newEntityReference=  new EntityReference(this.getfieldName, this.getfieldValue);
+                                entidade.Attributes.Add(checkValueField, newEntityReference);
                             }
                             break;
                         default:
@@ -79,6 +82,18 @@ namespace Dynamics_CRM
             Console.WriteLine("Erro gerado e gravado na tabela de erros.");
 
             return registro;
+        }
+
+        public String getfieldName
+        {
+            get { return fieldName; }
+            set { fieldName = value; }
+        }
+
+        public Guid getfieldValue
+        {
+            get { return fieldValue; }
+            set { fieldValue = value; }
         }
     }
 }

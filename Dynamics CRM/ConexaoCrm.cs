@@ -21,7 +21,6 @@ namespace Dynamics_CRM
             RedirectUri = app://58145B91-0C36-4500-8554-080854F2AC97;
             Url = https://org532fce75.crm2.dynamics.com/main.aspx;";
 
-
             if (crmServiceClientDestino == null)
             {
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;

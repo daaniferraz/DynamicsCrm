@@ -35,8 +35,7 @@ namespace Dynamics_CRM
             string nameEntity = "account";
 
             foreach (var item in colecao.Entities)
-            {
-                //ntity entityValidate = item.Attribute;
+            {                
                 try
                 {
 
@@ -75,14 +74,6 @@ namespace Dynamics_CRM
                     Guid registro = new Guid();
 
                     createEntidade.CreateErrorException(ex, nameEntity, conection, registro);
-
-                    /*var entidadeErro = new Entity("grp3_erroimportacao");
-
-                    entidadeErro.Attributes.Add("grp3_nomeentidade", "Conta");
-                    entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
-
-                    conection.Create(entidadeErro);
-                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
                 }
 
             }
