@@ -97,3 +97,28 @@ C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\DynamicsCRM
 C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.exe
 C:\Users\paulo.souza\Source\Repos\DynamicsTcc\Dynamics CRM\obj\Debug\Dynamics CRM.pdb
 C:\Users\danie\source\repos\Dynamics CRM\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.AssemblyReference.cache
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Dynamics CRM.exe.config
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Dynamics CRM.exe
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Dynamics CRM.pdb
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Rest.ClientRuntime.dll
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Deployment.dll
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.dll
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Workflow.dll
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Xrm.Tooling.Connector.dll
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Newtonsoft.Json.dll
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.xml
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Deployment.xml
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Xrm.Sdk.Workflow.xml
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Microsoft.Xrm.Tooling.Connector.xml
+D:\pedro\Documents\TccAcad\Dynamics CRM\bin\Debug\Newtonsoft.Json.xml
+D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\DynamicsCRM.csprojAssemblyReference.cache
+D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CoreCompileInputs.cache
+D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CopyComplete
+D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\Dynamics CRM.exe
+D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\Dynamics CRM.pdb

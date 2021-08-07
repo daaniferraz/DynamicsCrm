@@ -18,50 +18,41 @@ namespace Plugin
             IPluginExecutionContext context = (IPluginExecutionContext)
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
 
-            IOrganizationServiceFactory serviceFactory =
-                (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
-            IOrganizationService service = serviceFactory.CreateOrganizationService(context.UserId);
-
             
             if (context.InputParameters.Contains("Target") &&
                 context.InputParameters["Target"] is Entity)
             {
                 Entity grp3_clientepotenciallead = (Entity)context.InputParameters["Target"];
 
+                IOrganizationServiceFactory serviceFactory =
+    (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
+                IOrganizationService service = serviceFactory.CreateOrganizationService(context.UserId);
+
                 try
                 {
-                    tracingService.Trace("Entramos no TRY");
-                    //Atribui valor à Entity, neste caso, a tabela task(tarefa).
-                    Entity RegistroTask = new Entity("task");
-                    tracingService.Trace("Criamos a Task");
+                    //Atribui valor à entidade.
+                    Entity registroTask = new Entity("task");
 
-                    //Atribui valor aos campos da entidade tarefa.
-                    RegistroTask.Attributes.Add("subject", "Follow Up");
-                    //Descrição a mudar.
-                    tracingService.Trace("Adicionad o subject");
-                    RegistroTask.Attributes.Add("description", "Entre em contato com o Lead para tentar concretizar a venda.");
-                    tracingService.Trace("Adicionado description");
+                    registroTask["subject"] = "Follow up.";
+                    registroTask["description"] = "Entre em contato com o Lead para tentar concretizar a venda.";
+                    registroTask["scheduledend"] = DateTime.Now.AddDays(7);
+                    registroTask["prioritycode"] = new OptionSetValue(2);
+                    registroTask["actualdurationminutes"] = 20;
 
-                    //Atribui falor à data de conclusão por meio do objeto DateTime.
-                    RegistroTask.Attributes.Add("scheduledend", DateTime.Now.AddDays(7));
-                    tracingService.Trace("Adicionado scheduledend ");
+                    if (context.OutputParameters.Contains("grp3_nome"))
+                    {
+                        Guid regardingobjectid = new Guid(context.OutputParameters["grp3_nome"].ToString());
+                        string regardingobjectidType = "grp3_clientepotenciallead";
 
-                    //Opção para preencher valor selecionável ***Criar ENUM baixa (0), normal (1), alta (2).
-                    RegistroTask.Attributes.Add("prioritycode", new OptionSetValue(2));
-                    tracingService.Trace("Adicionado prioridade");
+                        registroTask["regardingobjectid"] =
+                        new EntityReference(regardingobjectidType, regardingobjectid);
+                    }
 
-                    //Atribui valor ao tempo de duração da tarefa (INT).
-                    RegistroTask.Attributes.Add("actualdurationminutes", 20);
-                    tracingService.Trace("Adicionado duracao");
-
-                    //Atribuindo um dono à tarefa para que ela não fique "órfã".
-                    RegistroTask.Attributes.Add("regardingobjectid", grp3_clientepotenciallead.ToEntityReference());
-                    tracingService.Trace("Adicionado regardingobjectid");
-
-                    Guid tarefaGuid = service.Create(RegistroTask);
-
+                    tracingService.Trace("TarefaPlugin : Criando a tarefa.");
+                    service.Create(registroTask);
                 }
 
+                
                 catch (FaultException<OrganizationServiceFault> ex)
                 {
                     throw new InvalidPluginExecutionException("Um erro ocorreu neste plugin. Procure o responsável da área!", ex);
