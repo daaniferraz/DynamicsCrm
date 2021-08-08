@@ -7,7 +7,7 @@ namespace Dynamics_CRM
 {
     class ImportacaoContato
     {
-        public void ImportarConta(CrmServiceClient CrmImport)
+        public void ImportarContato(CrmServiceClient CrmImport)
 
         {
             CreateEntidade createEntidade = new CreateEntidade();
@@ -36,7 +36,8 @@ namespace Dynamics_CRM
 
             foreach (var item in colecao.Entities)
             {
-                
+                var nameError = item["firstname"].ToString();
+
                 try
                 {
 
@@ -74,7 +75,8 @@ namespace Dynamics_CRM
                 {
                     Guid registro = new Guid();
 
-                    createEntidade.CreateErrorException(ex, nameEntity, conection, registro);                   
+                    Console.WriteLine("Não foi possível importar o contato: " + nameError);
+                    createEntidade.CreateErrorException(ex, nameEntity, conection, registro);                    
                 }
 
             }

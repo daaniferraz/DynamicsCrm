@@ -35,7 +35,9 @@ namespace Dynamics_CRM
             string nameEntity = "account";
 
             foreach (var item in colecao.Entities)
-            {                
+            {
+                var nameError = item["name"].ToString();
+
                 try
                 {
 
@@ -73,6 +75,7 @@ namespace Dynamics_CRM
                 {
                     Guid registro = new Guid();
 
+                    Console.WriteLine("Não foi possível importar a conta: " + nameError);
                     createEntidade.CreateErrorException(ex, nameEntity, conection, registro);
                 }
 

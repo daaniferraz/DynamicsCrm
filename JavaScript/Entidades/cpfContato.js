@@ -1,6 +1,4 @@
-﻿// VALIDA CPF
-
-function OnChange(executionContext) {
+﻿function OnChange(executionContext) {
 
     debugger;
 
@@ -8,8 +6,8 @@ function OnChange(executionContext) {
 
     var cpf = formularioContexto.getAttribute("grp3_cpf").getValue();
     if (cpf === null) {
-        var cnpjFieldControl = formularioContexto.getControl('grp3_cpf');
-        cnpjFieldControl.setNotification("Inserir CPF.");
+        var cpfFieldControl = formularioContexto.getControl('grp3_cpf');
+        cpfFieldControl.setNotification("Inserir CPF.");
         return;
     }
 
@@ -18,9 +16,9 @@ function OnChange(executionContext) {
 
     if (valida === false) {
 
-        var cnpjFieldControl = formularioContexto.getControl('grp3_cpf');
+        var cpfFieldControl = formularioContexto.getControl('grp3_cpf');
         formularioContexto.getControl('grp3_cpf').clearNotification();
-        cnpjFieldControl.setNotification("CPF inválido!.", "ERROR", "2");
+        cpfFieldControl.setNotification("CPF inválido!.");
         return;
 
 
@@ -45,9 +43,9 @@ function OnChange(executionContext) {
     Xrm.WebApi.retrieveMultipleRecords("contact", fetchXml).then(
         function success(result) {
             if (result.entities.length > 0) {
-                var cnpjFieldControl = formularioContexto.getControl('grp3_cpf');
+                var cpfFieldControl = formularioContexto.getControl('grp3_cpf');
 
-                cnpjFieldControl.setNotification("CPF já cadastrado!");
+                cpfFieldControl.setNotification("CPF já cadastrado!");
             }
             else {
                 debugger;
@@ -65,7 +63,16 @@ function TestaCPF(strCPF) {
     var Soma;
     var Resto;
     Soma = 0;
-    if (strCPF == "00000000000") return false;
+    if (strCPF == "00000000000" ||
+        strCPF == "11111111111" ||
+        strCPF == "22222222222" ||
+        strCPF == "33333333333" ||
+        strCPF == "44444444444" ||
+        strCPF == "55555555555" ||
+        strCPF == "66666666666" ||
+        strCPF == "77777777777" ||
+        strCPF == "88888888888" ||
+        strCPF == "99999999999") return false;
 
     for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
     Resto = (Soma * 10) % 11;
@@ -81,5 +88,3 @@ function TestaCPF(strCPF) {
     if (Resto != parseInt(strCPF.substring(10, 11))) return false;
     return true;
 }
-
-

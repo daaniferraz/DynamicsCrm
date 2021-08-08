@@ -27,27 +27,9 @@ namespace Dynamics_CRM
                 if (item.Attributes.Contains(checkValueField))
                 {
                     checkValueField = checkValueField.Replace("drf", "grp3");
-                    Console.WriteLine(item[checkValueFieldFrom].GetType().Name);
+
                     switch (item[checkValueFieldFrom].GetType().Name)
-                    {
-                        /*case "String":
-                            //entidade.Attributes.Add(checkValueField, item[checkValueFieldFrom].ToString());
-                            entidade.Attributes.Add(checkValueField, attributesValidate.Value);
-                            createRecord = true;
-                        break;
-                        case "Int32":
-                            entidade.Attributes.Add(checkValueField, item[checkValueFieldFrom]);
-                            createRecord = true;
-                        break;                            
-                        case "Money":
-                            Money valorPedido = (Money)item[checkValueFieldFrom]; 
-                            entidade.Attributes.Add(checkValueField, valorPedido);
-                            createRecord = true;
-                        break;
-                        case "OptionSetValue":
-                            entidade.Attributes.Add(checkValueField, attributesValidate.Value);
-                            createRecord = true;
-                            break;*/
+                    {                        
                         case "EntityReference":
                             if (checkValueField.ToString() == this.getfieldName && this.getfieldName.Length > 0)
                             {

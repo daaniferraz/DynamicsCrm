@@ -1,6 +1,4 @@
-﻿// VALIDA CNPJ 
-
-function OnChange(executionContext) {
+﻿function OnChange(executionContext) {
 
     debugger;
 

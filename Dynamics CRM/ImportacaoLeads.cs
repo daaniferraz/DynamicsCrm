@@ -33,6 +33,8 @@ namespace Dynamics_CRM
 
             foreach (var item in colecao.Entities)
             {
+                var nameError = item["drf_nome"].ToString();
+
                 try
                 {
                     var entidade = new Entity("drf_clientepotenciallead");
@@ -78,6 +80,7 @@ namespace Dynamics_CRM
                 {
                     Guid registro = new Guid();
 
+                    Console.WriteLine("Não foi possível importar o lead: " + nameError);
                     createEntidade.CreateErrorException(ex, nameEntity, conectionTo, registro);
                 }
             }

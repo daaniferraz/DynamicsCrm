@@ -29,6 +29,8 @@ namespace Dynamics_CRM
 
             foreach (var item in colecaoFrom.Entities)
             {
+
+                var nameError = item["drf_pedido"].ToString();
                 try
                 {
                     Guid registro = new Guid();
@@ -61,15 +63,9 @@ namespace Dynamics_CRM
                 {                    
                     Guid registro = new Guid();
 
+                    Console.WriteLine("Não foi possível importar o pedido: " + nameError);
                     createEntidade.CreateErrorException(ex, nameEntity, conectionTo, registro);
                     
-                    /*var entidadeErro = new Entity("grp3_erroimportacao");
-
-                    entidadeErro.Attributes.Add("grp3_nomeentidade", "Pedido");
-                    entidadeErro.Attributes.Add("grp3_errogerado", ex.ToString() + " Gerado em: " + Convert.ToDateTime(DateTime.Now).ToString());
-
-                    conectionTo.Create(entidadeErro);
-                    Console.WriteLine("Erro gerado e gravado na tabela de erros.");*/
                 }
             }
         }
@@ -101,6 +97,9 @@ namespace Dynamics_CRM
 
             foreach (var item in colecaoFrom.Entities)
             {
+
+                var nameError = item["drf_pedido"].ToString();
+                var itemError = item["drf_nomedoitem"].ToString();
                 try
                 {
                     var entidade = new Entity("grp3_itenspedidos");
@@ -172,6 +171,7 @@ namespace Dynamics_CRM
                 {
                     Guid registro = new Guid();
 
+                    Console.WriteLine("Não foi possível importar o item "+ itemError+" do pedido: " + nameError);
                     createEntidade.CreateErrorException(ex, nameEntity, conectionTo, registro);
                 }
             }
@@ -212,11 +212,11 @@ namespace Dynamics_CRM
                 entidadeProduto.Attributes.Add("grp3_iditem", Convert.ToInt32(IdItem));
 
                 CrmImportTo.Create(entidadeProduto);
-                Console.WriteLine("Item criado na tabela Produtos: " + nomeItem);
             }
             catch (Exception ex)
             {
                 Guid registro = new Guid();
+                Console.WriteLine("Não foi possível importar o produto: " + nomeItem);
                 createEntidade.CreateErrorException(ex, nameEntity, CrmImportTo, registro);
             }
         }

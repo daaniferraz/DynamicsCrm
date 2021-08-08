@@ -45,7 +45,6 @@ D:\pedro\Documents\TccAcad\Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
 D:\pedro\Documents\TccAcad\Plugins\bin\Debug\Microsoft.Xrm.Sdk.dll
 D:\pedro\Documents\TccAcad\Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
 D:\pedro\Documents\TccAcad\Plugins\bin\Debug\Microsoft.Xrm.Sdk.xml
-D:\pedro\Documents\TccAcad\Plugins\obj\Debug\Plugin.csprojAssemblyReference.cache
 D:\pedro\Documents\TccAcad\Plugins\obj\Debug\Plugin.csproj.CoreCompileInputs.cache
 D:\pedro\Documents\TccAcad\Plugins\obj\Debug\Plugin.csproj.CopyComplete
 D:\pedro\Documents\TccAcad\Plugins\obj\Debug\Plugin.dll

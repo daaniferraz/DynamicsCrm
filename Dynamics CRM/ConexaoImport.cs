@@ -15,8 +15,8 @@ namespace Dynamics_CRM
         public CrmServiceClient Obter()
         {
             var connectionStringCRM = @"AuthType=OAuth;
-            Username = Daaniferraz@danielrodriguesferraz.onmicrosoft.com;
-            Password = Segredo#1127; SkipDiscovery = True;
+            Username = grupo2legado@danielrodriguesferraz.onmicrosoft.com;
+            Password = Grupo2d#ness; SkipDiscovery = True;
             AppId = 51f81489-12ee-4a9e-aaae-a2591f45987d;
             RedirectUri = app://58145B91-0C36-4500-8554-080854F2AC97;
             Url = https://org44041492.crm2.dynamics.com/main.aspx;";
