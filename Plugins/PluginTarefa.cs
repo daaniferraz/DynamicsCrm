@@ -12,42 +12,41 @@ namespace Plugin
     {
         public void Execute(IServiceProvider serviceProvider)
         {
+            //Permite traçar o log dos passos do programa.
             ITracingService tracingService =
                 (ITracingService)serviceProvider.GetService(typeof(ITracingService));
 
+            //Fornece acesso ao contexto para o evento que executou o Plugin.
             IPluginExecutionContext context = (IPluginExecutionContext)
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
 
-            
+            //Verifica se o contexto inclui os parâmetros esperados.
             if (context.InputParameters.Contains("Target") &&
                 context.InputParameters["Target"] is Entity)
             {
-                Entity grp3_clientepotenciallead = (Entity)context.InputParameters["Target"];
+                Entity entity = (Entity)context.InputParameters["Target"];
 
+                //Interface que implementa a IOrganizationsService.
                 IOrganizationServiceFactory serviceFactory =
     (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
                 IOrganizationService service = serviceFactory.CreateOrganizationService(context.UserId);
+
+                
 
                 try
                 {
                     //Atribui valor à entidade.
                     Entity registroTask = new Entity("task");
 
-                    registroTask["subject"] = "Follow up.";
+                    registroTask["subject"] = "Follow Up";
                     registroTask["description"] = "Entre em contato com o Lead para tentar concretizar a venda.";
+                    registroTask["scheduledstart"] = (DateTime.Now.AddDays(7));
                     registroTask["scheduledend"] = DateTime.Now.AddDays(7);
                     registroTask["prioritycode"] = new OptionSetValue(2);
                     registroTask["actualdurationminutes"] = 20;
+                    registroTask.Attributes.Add("regardingobjectid", entity.ToEntityReference());
 
-                    if (context.OutputParameters.Contains("grp3_nome"))
-                    {
-                        Guid regardingobjectid = new Guid(context.OutputParameters["grp3_nome"].ToString());
-                        string regardingobjectidType = "grp3_clientepotenciallead";
-
-                        registroTask["regardingobjectid"] =
-                        new EntityReference(regardingobjectidType, regardingobjectid);
-                    }
-
+               
                     tracingService.Trace("TarefaPlugin : Criando a tarefa.");
                     service.Create(registroTask);
                 }
