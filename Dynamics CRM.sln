@@ -22,9 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entidades", "Entidades", "{70215E4A-D4FB-4B2E-BF71-73DB80066E71}"
 	ProjectSection(SolutionItems) = preProject
 		JavaScript\Entidades\cnpjConta.js = JavaScript\Entidades\cnpjConta.js
-		JavaScript\Entidades\cnpjLead.js = JavaScript\Entidades\cnpjLead.js
 		JavaScript\Entidades\cpfContato.js = JavaScript\Entidades\cpfContato.js
-		JavaScript\Entidades\cpfLead.js = JavaScript\Entidades\cpfLead.js
+		JavaScript\Entidades\ValidaCpj_Cnpj_Lead.js = JavaScript\Entidades\ValidaCpj_Cnpj_Lead.js
 	EndProjectSection
 EndProject
 Global

@@ -1,4 +1,5 @@
-﻿ //Arquivo: cpfContato.js
+﻿// VALIDA CPF
+
 function OnChange(executionContext) {
 
     debugger;
@@ -12,6 +13,23 @@ function OnChange(executionContext) {
         return;
     }
 
+
+    var valida = TestaCPF(cpf);
+
+    if (valida === false) {
+
+        var cnpjFieldControl = formularioContexto.getControl('grp3_cpf');
+        formularioContexto.getControl('grp3_cpf').clearNotification();
+        cnpjFieldControl.setNotification("CPF inválido!.", "ERROR", "2");
+        return;
+
+
+    }
+    else {
+        formularioContexto.getControl('grp3_cpf').clearNotification();
+    }
+
+
     var fetchXml = '?fetchXml=<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">' +
         '<entity name="contact">' +
         '<attribute name="fullname" />' +
@@ -23,8 +41,8 @@ function OnChange(executionContext) {
         '</filter>' +
         '</entity>' +
         '</fetch>';
-    
-   Xrm.WebApi.retrieveMultipleRecords("contact", fetchXml).then(
+
+    Xrm.WebApi.retrieveMultipleRecords("contact", fetchXml).then(
         function success(result) {
             if (result.entities.length > 0) {
                 var cnpjFieldControl = formularioContexto.getControl('grp3_cpf');
@@ -42,3 +60,26 @@ function OnChange(executionContext) {
         }
     );
 }
+
+function TestaCPF(strCPF) {
+    var Soma;
+    var Resto;
+    Soma = 0;
+    if (strCPF == "00000000000") return false;
+
+    for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+
+    Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11))) return false;
+    return true;
+}
+
+
