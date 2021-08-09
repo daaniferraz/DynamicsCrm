@@ -49,3 +49,4 @@ D:\pedro\Documents\TccAcad\Plugins\obj\Debug\Plugin.csproj.CoreCompileInputs.cac
 D:\pedro\Documents\TccAcad\Plugins\obj\Debug\Plugin.csproj.CopyComplete
 D:\pedro\Documents\TccAcad\Plugins\obj\Debug\Plugin.dll
 D:\pedro\Documents\TccAcad\Plugins\obj\Debug\Plugin.pdb
+D:\pedro\Documents\TccAcad\Plugins\obj\Debug\Plugin.csprojAssemblyReference.cache

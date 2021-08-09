@@ -7,6 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Grupo 2 Verde - D#NESS - Academia Dynamics 2021
+//Paulo Henrique
+//Erick Gracioli
+//Daniel Ferraz
+//Marcelo Mariniello
+//Pedro Roberto 
 
 namespace Dynamics_CRM
 {

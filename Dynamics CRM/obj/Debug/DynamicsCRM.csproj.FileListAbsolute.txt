@@ -121,3 +121,4 @@ D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CoreCompile
 D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\DynamicsCRM.csproj.CopyComplete
 D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\Dynamics CRM.exe
 D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\Dynamics CRM.pdb
+D:\pedro\Documents\TccAcad\Dynamics CRM\obj\Debug\DynamicsCRM.csprojAssemblyReference.cache
